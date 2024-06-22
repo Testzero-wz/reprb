@@ -23,7 +23,7 @@ AUTHOR_EMAIL = "testzero.wz@gmail.com"
 
 URL = "https://github.com/testzero-wz/reprb"
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 LICENSE = "MIT"
 
