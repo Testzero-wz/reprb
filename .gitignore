@@ -1,0 +1,7 @@
+*.ri
+dist/
+build/
+*.egg-info/
+__pycache__/
+.vscode
+.tmp
