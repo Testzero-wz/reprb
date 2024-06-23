@@ -19,12 +19,7 @@ python3 -m pip install reprb
 ```bash
 git clone git@github.com:Testzero-wz/reprb.git
 
-cd reprb
-
-# !!! windows should run this extra command
-# python3 .\setup.py build_ext --compiler=mingw32
-
-python3 setup.py install
+cd reprb && pip3 install .
 ```
 
 ### Usage
