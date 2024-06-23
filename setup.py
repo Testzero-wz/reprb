@@ -1,54 +1,26 @@
-# setup.py
-from setuptools import setup, Extension, find_packages
-import os
+from setuptools import Extension, setup
+import platform
 
 
-def read(fname):
-    return open(
-        os.path.join(os.path.dirname(__file__), fname), "r", encoding="utf-8"
-    ).read()
+def get_extra_compile_args():
+    compiler = platform.python_compiler()
+    if "MSC" in compiler:
+        return ["/W3"]
+    elif "GCC" in compiler:
+        return ["-Wno-unused-const-variable"]
+    elif "Clang" in compiler:
+        return ["-Wno-unused-const-variable"]
+    else:
+        print("Unknown compiler, install GCC/Clang/MSVC first!")
+        exit(-1)
 
 
-NAME = "reprb"
-
-DESCRIPTION = "Represent bytes with printable characters"
-
-LONG_DESCRIPTION = read("README.MD")
-
-KEYWORDS = "repr bytes eval dump load"
-
-AUTHOR = "T3stzer0"
-
-AUTHOR_EMAIL = "testzero.wz@gmail.com"
-
-URL = "https://github.com/testzero-wz/reprb"
-
-VERSION = "1.0.2"
-
-LICENSE = "MIT"
-
-SETUP_REQUIRES = ["setuptools>=68.0.0", "wheel"]
-
-module = Extension(
+ext_modules = Extension(
     "_reprb",
-    sources=["src/_reprb.c"],
-    extra_compile_args=["-Wno-unused-const-variable"],
+    sources=["src/reprb/c_extension/_reprb.c"],
+    extra_compile_args=get_extra_compile_args(),
 )
 
 setup(
-    name=NAME,
-    version=VERSION,
-    description=DESCRIPTION,
-    long_description=LONG_DESCRIPTION,
-    long_description_content_type="text/markdown",
-    author=AUTHOR,
-    author_email=AUTHOR_EMAIL,
-    ext_modules=[module],
-    classifiers=[
-        "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3",
-        "Operating System :: OS Independent",
-    ],
-    setup_requires=SETUP_REQUIRES,
-    packages=find_packages(),
+    ext_modules=[ext_modules],
 )

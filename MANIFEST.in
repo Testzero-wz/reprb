@@ -1,5 +1,5 @@
 include src/*.c
 include src/*.rl
 include MANIFEST.in
-include README.MD
+include README.md
 include LICENSE

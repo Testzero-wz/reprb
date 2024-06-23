@@ -1,15 +1,10 @@
-import warnings
-from _reprb import c_reprb, c_evalb
 import io
-
-warnings.filterwarnings("ignore", category=DeprecationWarning)
+from _reprb import c_reprb, c_evalb
 
 dumpb = c_reprb
 loadb = c_evalb
 reprb = c_reprb
 evalb = c_evalb
-
-__ALL__ = ["reprb", "evalb", "dumpb", "loadb", "dump", "load", "load_iter"]
 
 
 def dump(obj: bytes, file, sep="\n"):
