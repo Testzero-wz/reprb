@@ -23,9 +23,11 @@ AUTHOR_EMAIL = "testzero.wz@gmail.com"
 
 URL = "https://github.com/testzero-wz/reprb"
 
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 
 LICENSE = "MIT"
+
+SETUP_REQUIRES = ["setuptools>=68.0.0", "wheel"]
 
 module = Extension(
     "_reprb",
@@ -47,5 +49,6 @@ setup(
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
     ],
+    setup_requires=SETUP_REQUIRES,
     packages=find_packages(),
 )
