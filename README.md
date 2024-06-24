@@ -1,6 +1,6 @@
 ## reprb
 
-Represent bytes with printable characters, similar to how the Python built-in functions repr() and eval() do.Represent bytes using printable bytes, just like the Python built-in functions `repr()` and `eval()` do.
+Represent bytes with printable characters, similar to how python built-in functions repr() and eval() do.
 
 ## why
 
