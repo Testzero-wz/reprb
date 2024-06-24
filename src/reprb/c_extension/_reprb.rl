@@ -1,5 +1,5 @@
-#include <Python.h>
 #define PY_SSIZE_T_CLEAN
+#include <Python.h>
 
 char HEX[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 unsigned char HEXV [256] = {
