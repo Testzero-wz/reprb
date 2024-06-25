@@ -21,7 +21,6 @@ unsigned char HEXV [256] = {
     machine c_reprb_fsm;
 
     escape = 0x5c;
-    normal = ((0x20 .. 0x7e) - escape)  @ { *buf++ =  fc;};
     
     special_escape = (
               0x0  @ { *buf++ =  '0'; }
@@ -31,8 +30,12 @@ unsigned char HEXV [256] = {
             | 0xa  @ { *buf++ =  'n'; }
             | 0xc  @ { *buf++ =  'f'; }
             | 0xd  @ { *buf++ =  'r'; }
+            | 0x22 @ { *buf++ =  '"'; }
+            | 0x27 @ { *buf++ =  '\'';}
             | 0x5c @ { *buf++ =  '\\';}
         ) > { *buf++ =  '\\'; };
+        
+    normal = ((0x20 .. 0x7e) - escape - special_escape)  @ { *buf++ =  fc;};
 
     need_escape = (any - (normal | special_escape))
     @{
@@ -99,6 +102,8 @@ PyObject* c_reprb(PyObject* self, PyObject* args) {
         |'v'    @ { value = '\v';}
         |'f'    @ { value = '\f';}
         |'a'    @ { value = '\a';}
+        |'"'    @ { value = '"' ;}
+        |"'"    @ { value = '\'';}
         |'0'    @ { value = 0   ;}
         |'x'    @ { value = 0   ;} xdigit{2} ${value = (value<<4) + HEXV[fc];}
     );

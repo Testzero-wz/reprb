@@ -18,8 +18,9 @@ def test():
         b"True",
         b'"',
         b"\\'",
-        "abc\x00\x01\x02中文\t\n\r&*（￥%%……&%*".encode(),
+        "abc\"''''''\x00\x01\x02中文\t\n\r&*（￥%%……&%*".encode(),
         b"'\"\\",
+        b"\\\"\\'",
     ]
     pass_cnt = 0
     for t in testcases:
