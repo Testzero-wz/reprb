@@ -1,5 +1,6 @@
 import io
 from _reprb import c_reprb, c_evalb
+from collections.abc import Iterable
 
 dumpb = c_reprb
 loadb = c_evalb
@@ -9,7 +10,7 @@ evalb = c_evalb
 
 def dump(obj: bytes, file, sep="\n"):
 
-    assert isinstance(obj, (bytes, list))
+    assert isinstance(obj, (bytes, Iterable))
     assert isinstance(sep, str)
     sep = sep.encode()
 
@@ -30,11 +31,11 @@ def dump(obj: bytes, file, sep="\n"):
             f.write(dumpb(obj))
             f.write(sep)
 
-        elif isinstance(obj, list):
+        elif isinstance(obj, Iterable):
             for o in obj:
                 assert isinstance(
                     o, bytes
-                ), f"Expect bytes object in list, but got {type(o)}"
+                ), f"Expect Iterable object, but got {type(o)}"
                 f.write(dumpb(o))
                 f.write(sep)
 
