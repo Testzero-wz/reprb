@@ -149,26 +149,6 @@ PyObject* c_reprb(PyObject* self, PyObject* args) {
 			*buf++ =  '\\'; 
 		}
 		{
-			*buf++ =  '"'; 
-		}
-		
-		
-		goto _st0;
-		_ctr11:
-		{
-			*buf++ =  '\\'; 
-		}
-		{
-			*buf++ =  '\'';
-		}
-		
-		
-		goto _st0;
-		_ctr12:
-		{
-			*buf++ =  '\\'; 
-		}
-		{
 			*buf++ =  '\\';
 		}
 		
@@ -217,19 +197,9 @@ PyObject* c_reprb(PyObject* self, PyObject* args) {
 				goto _ctr8;
 				
 			}
-			case 34:
-			{
-				goto _ctr10;
-				
-			}
-			case 39:
-			{
-				goto _ctr11;
-				
-			}
 			case 92:
 			{
-				goto _ctr12;
+				goto _ctr10;
 				
 			}
 			
@@ -377,7 +347,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		goto _st2;
 		_ctr8:
 		{
-			value = '"' ;
+			value = 0   ;
 		}
 		{
 			{
@@ -394,7 +364,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		goto _st2;
 		_ctr9:
 		{
-			value = '\'';
+			value = '\\';
 		}
 		{
 			{
@@ -411,7 +381,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		goto _st2;
 		_ctr10:
 		{
-			value = 0   ;
+			value = '\a';
 		}
 		{
 			{
@@ -428,7 +398,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		goto _st2;
 		_ctr11:
 		{
-			value = '\\';
+			value = '\b';
 		}
 		{
 			{
@@ -445,7 +415,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		goto _st2;
 		_ctr12:
 		{
-			value = '\a';
+			value = '\f';
 		}
 		{
 			{
@@ -462,7 +432,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		goto _st2;
 		_ctr13:
 		{
-			value = '\b';
+			value = '\n';
 		}
 		{
 			{
@@ -479,7 +449,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		goto _st2;
 		_ctr14:
 		{
-			value = '\f';
+			value = '\r';
 		}
 		{
 			{
@@ -496,40 +466,6 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		goto _st2;
 		_ctr15:
 		{
-			value = '\n';
-		}
-		{
-			{
-				te = p+1;
-				{
-					*buf++ = value;
-				}
-				
-			}
-			
-		}
-		
-		
-		goto _st2;
-		_ctr16:
-		{
-			value = '\r';
-		}
-		{
-			{
-				te = p+1;
-				{
-					*buf++ = value;
-				}
-				
-			}
-			
-		}
-		
-		
-		goto _st2;
-		_ctr17:
-		{
 			value = '\t';
 		}
 		{
@@ -545,7 +481,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		
 		
 		goto _st2;
-		_ctr18:
+		_ctr16:
 		{
 			value = '\v';
 		}
@@ -661,64 +597,54 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 		{
 			switch ( ((*( p  ))
 			) ) {
-				case 34:
+				case 48:
 				{
 					goto _ctr8;
 					
 				}
-				case 39:
+				case 92:
 				{
 					goto _ctr9;
 					
 				}
-				case 48:
+				case 97:
 				{
 					goto _ctr10;
 					
 				}
-				case 92:
+				case 98:
 				{
 					goto _ctr11;
 					
 				}
-				case 97:
+				case 102:
 				{
 					goto _ctr12;
 					
 				}
-				case 98:
+				case 110:
 				{
 					goto _ctr13;
 					
 				}
-				case 102:
+				case 114:
 				{
 					goto _ctr14;
 					
 				}
-				case 110:
+				case 116:
 				{
 					goto _ctr15;
 					
 				}
-				case 114:
+				case 118:
 				{
 					goto _ctr16;
 					
 				}
-				case 116:
-				{
-					goto _ctr17;
-					
-				}
-				case 118:
-				{
-					goto _ctr18;
-					
-				}
 				case 120:
 				{
-					goto _ctr19;
+					goto _ctr17;
 					
 				}
 				
@@ -727,7 +653,7 @@ PyObject* c_evalb(PyObject* self, PyObject* args) {
 			
 		}
 		
-		_ctr19:
+		_ctr17:
 		{
 			value = 0   ;
 		}
