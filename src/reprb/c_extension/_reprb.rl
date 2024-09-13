@@ -23,8 +23,7 @@ unsigned char HEXV [256] = {
     escape = 0x5c;
     
     special_escape = (
-              0x0  @ { *buf++ =  '0'; }
-            | 0x7  @ { *buf++ =  'a'; }
+              0x7  @ { *buf++ =  'a'; }
             | 0x8  @ { *buf++ =  'b'; }
             | 0x9  @ { *buf++ =  't'; }
             | 0xa  @ { *buf++ =  'n'; }
@@ -100,7 +99,6 @@ PyObject* c_reprb(PyObject* self, PyObject* args) {
         |'v'    @ { value = '\v';}
         |'f'    @ { value = '\f';}
         |'a'    @ { value = '\a';}
-        |'0'    @ { value = 0   ;}
         |'x'    @ { value = 0   ;} xdigit{2} ${value = (value<<4) + HEXV[fc];}
     );
 
